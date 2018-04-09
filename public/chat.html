@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css"/>-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>-->
+    <script defer src="js/libs/fontawesome-all.min.js"></script>
+    <title>Document</title>
+</head>
+<body class="chat">
+
+  <div class="chat__sidebar">
+    <p id="titleArea"><i class="fas fa-users"></i> Group Member</p>
+    <div id="users"></div>
+  </div>
+
+    <div class="chat__main">
+        <ol id="messages" class="chat__messages"></ol>
+
+        <div class="chat__footer">
+            <form id="message-form">
+                <input name="message" type="text" placeholder="Message" autofocus autocomplete="off"/>
+                <button>Send</button>
+            </form>
+            <button id="send-location">Share location <i class="fas fa-share-square"></i></button>
+        </div>
+    </div>
+
+    <script id="message-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4><i class="fas fa-user-circle"></i> {{from}}</h4>
+                <span>{{createdAt}}</span>
+            </div>
+            <div class="message__body" sty>
+                <p>{{text}}</p>
+            </div>
+        </li>
+    </script>
+
+    <script id="location-message-template" type="text/template">
+        <li class="message">
+            <div class="message__title">
+                <h4><i class="far fa-compass"></i> {{from}}</h4>
+                <span>{{createdAt}}</span>
+            </div>
+            <div class="message__body" style="background-color: #3E4551; padding: 10px; width:180px; border-radius: 5px;">
+                <p>
+                    <a href="{{url}}" target="_blank" style="text-decoration: none;cursor: pointer; color: white;">You can find me Here <i class="fas fa-street-view"></i></a>
+                </p>
+            </div>
+        </li>
+    </script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/libs/jquery-3.3.1.min.js"></script>
+    <script src="js/libs/moment.js"></script>
+    <script src="js/libs/mustache.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>
